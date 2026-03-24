@@ -1,16 +1,21 @@
 import { spawn } from 'child_process'
+import { resolve, dirname } from 'path'
 
 const sh = (command, cb, pipeOutputToResult = false) => {
-  const [cmd, ...args] = command.split(' ')
+  const binPath = resolve(process.cwd(), 'node_modules/.bin')
+  const nodePath = dirname(process.execPath) // gets the dir of the current node binary
 
   const options = {
     cwd: process.cwd(),
-    env: process.env,
+    env: {
+      ...process.env,
+      PATH: `${binPath};${nodePath};${process.env.PATH}`,
+    },
     stdio: pipeOutputToResult ? 'pipe' : [0, 1, 2],
     shell: true,
   }
 
-  const child = spawn(cmd, args, options)
+  const child = spawn(command, [], options)
 
   let stdoutData = ''
 
@@ -22,7 +27,8 @@ const sh = (command, cb, pipeOutputToResult = false) => {
 
   child.on('close', (code) => {
     if (code === 0) {
-      cb(stdoutData)
+      cb(null, stdoutData)
+      return
     }
 
     cb(new Error(`child process exited with code ${code}`))

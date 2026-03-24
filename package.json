@@ -17,7 +17,7 @@
     "build": "cross-env NODE_ENV=production gulp build",
     "build:docs": "cross-env NODE_ENV=production gulp build:docs",
     "build:docs:staging": "cross-env STAGING=true yarn build:docs && yarn serve docs/dist",
-    "build:dist": "gulp build:dist",
+    "build:dist": "cross-env NODE_OPTIONS=--openssl-legacy-provider gulp build:dist",
     "prebuild:size": "gulp build:dist:es",
     "build:size": "node bundle-size/bundle.js",
     "ci": "yarn tsd:test && yarn lint && yarn test",

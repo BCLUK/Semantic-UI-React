@@ -19,7 +19,7 @@ task('clean:dist', (cb) => {
 // ----------------------------------------
 
 task('build:dist:commonjs:js', (cb) => {
-  sh(`yarn cross-env NODE_ENV=build babel ${paths.src()} -d ${paths.dist('commonjs')}`, cb)
+  sh(`cross-env NODE_ENV=build babel ${paths.src()} -d ${paths.dist('commonjs')}`, cb)
 })
 
 task('build:dist:commonjs:tsd', () =>
@@ -29,12 +29,12 @@ task('build:dist:commonjs:tsd', () =>
 task('build:dist:commonjs', parallel('build:dist:commonjs:js', 'build:dist:commonjs:tsd'))
 
 task('build:dist:es', (cb) => {
-  sh(`yarn cross-env NODE_ENV=build-es babel ${paths.src()} -d ${paths.dist('es')}`, cb)
+  sh(`cross-env NODE_ENV=build-es babel ${paths.src()} -d ${paths.dist('es')}`, cb)
 })
 
 task('build:dist:umd', (cb) => {
   sh(
-    `yarn cross-env NODE_ENV=build-umd webpack --config ${paths.base('webpack.umd.config.js')}`,
+    `cross-env NODE_ENV=build-umd webpack --config ${paths.base('webpack.umd.config.js')}`,
     cb,
   )
 })
