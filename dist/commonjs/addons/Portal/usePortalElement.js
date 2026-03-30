@@ -15,7 +15,8 @@ var _lib = require("../../lib");
  * @param {React.Ref} userRef
  */
 function usePortalElement(node, userRef) {
-  var ref = (0, _lib.useMergedRefs)(node.ref, userRef);
+  var _node$props;
+  var ref = (0, _lib.useMergedRefs)((_node$props = node.props) == null ? void 0 : _node$props.ref, userRef);
   if ( /*#__PURE__*/React.isValidElement(node)) {
     if (_reactIs.default.isForwardRef(node)) {
       return /*#__PURE__*/React.cloneElement(node, {

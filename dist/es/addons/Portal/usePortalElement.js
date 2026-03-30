@@ -11,7 +11,8 @@ import { useMergedRefs } from '../../lib';
  * @param {React.Ref} userRef
  */
 export default function usePortalElement(node, userRef) {
-  var ref = useMergedRefs(node.ref, userRef);
+  var _node$props;
+  var ref = useMergedRefs((_node$props = node.props) == null ? void 0 : _node$props.ref, userRef);
   if ( /*#__PURE__*/React.isValidElement(node)) {
     if (ReactIs.isForwardRef(node)) {
       return /*#__PURE__*/React.cloneElement(node, {

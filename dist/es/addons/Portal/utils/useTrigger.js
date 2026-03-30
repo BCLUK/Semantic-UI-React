@@ -9,7 +9,8 @@ import validateTrigger from './validateTrigger';
  * @param {React.Ref} triggerRef
  */
 function useTrigger(trigger, triggerRef) {
-  var ref = useMergedRefs(trigger == null ? void 0 : trigger.ref, triggerRef);
+  var _trigger$props;
+  var ref = useMergedRefs(trigger == null || (_trigger$props = trigger.props) == null ? void 0 : _trigger$props.ref, triggerRef);
   if (trigger) {
     /* istanbul ignore else */
     if (process.env.NODE_ENV !== 'production') {

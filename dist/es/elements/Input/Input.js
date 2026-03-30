@@ -89,7 +89,7 @@ var Input = /*#__PURE__*/React.forwardRef(function (props, _ref) {
       if (child.type === 'input') {
         return /*#__PURE__*/React.cloneElement(child, _extends({}, htmlInputProps, child.props, {
           ref: function ref(c) {
-            setRef(child.ref, c);
+            setRef(child.props.ref, c);
             setRef(_ref, c);
           }
         }));
