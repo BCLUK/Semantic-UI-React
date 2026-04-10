@@ -28,7 +28,7 @@ var ModalDimmer = /*#__PURE__*/React.forwardRef(function (props, ref) {
   var rest = (0, _lib.getUnhandledProps)(ModalDimmer, props);
   var ElementType = (0, _lib.getComponentType)(props);
   (0, _lib.useClassNamesOnNode)(mountNode, bodyClasses);
-  React.useEffect(function () {
+  React.useLayoutEffect(function () {
     var _elementRef$current;
     (_elementRef$current = elementRef.current) == null || (_elementRef$current = _elementRef$current.style) == null || _elementRef$current.setProperty('display', 'flex', 'important');
   }, []);
