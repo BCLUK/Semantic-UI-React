@@ -38,7 +38,7 @@ const ModalDimmer = React.forwardRef(function (props, ref) {
 
   useClassNamesOnNode(mountNode, bodyClasses)
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     elementRef.current?.style?.setProperty('display', 'flex', 'important')
   }, [])
 
